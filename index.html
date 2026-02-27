@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de Usuário (CEP + Persistência)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card">
+        <header class="card__header">
+          <h1 class="card__title">Cadastro de usuário</h1>
+          <p class="card__subtitle">
+            Digite o CEP para preencher o endereço automaticamente. Seus dados
+            ficam salvos mesmo ao recarregar.
+          </p>
+        </header>
+
+        <form class="form" id="user_form" autocomplete="on" novalidate>
+          <div class="form__grid">
+            <div class="form__field">
+              <label class="form__label" for="first_name">Nome</label>
+              <input
+                class="form__input"
+                id="first_name"
+                name="first_name"
+                type="text"
+                placeholder="Ex.: Deon"
+                required
+              />
+              <small class="form__hint">Informe seu nome.</small>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="last_name">Sobrenome</label>
+              <input
+                class="form__input"
+                id="last_name"
+                name="last_name"
+                type="text"
+                placeholder="Ex.: Silva"
+                required
+              />
+              <small class="form__hint">Informe seu sobrenome.</small>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="email">E-mail</label>
+              <input
+                class="form__input"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="exemplo@dominio.com"
+                required
+              />
+              <small class="form__hint">Vamos usar para contato.</small>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="phone">Telefone</label>
+              <input
+                class="form__input"
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="numeric"
+                placeholder="(11) 99999-9999"
+                maxlength="15"
+              />
+              <small class="form__hint"
+                >Opcional. Formato: (DD) 99999-9999.</small
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="zip_code">CEP</label>
+              <input
+                class="form__input"
+                id="zip_code"
+                name="zip_code"
+                type="text"
+                inputmode="numeric"
+                placeholder="00000-000"
+                maxlength="9"
+                required
+              />
+              <small class="form__hint">Ao digitar, buscamos no ViaCEP.</small>
+            </div>
+
+            <div class="form__field form__field--span2">
+              <label class="form__label" for="address_line1">Logradouro</label>
+              <input
+                class="form__input"
+                id="address_line1"
+                name="address_line1"
+                type="text"
+                placeholder="Rua, Avenida..."
+                required
+              />
+              <small class="form__hint"
+                >Preenchido automaticamente quando possível.</small
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="address_number">Número</label>
+              <input
+                class="form__input"
+                id="address_number"
+                name="address_number"
+                type="text"
+                placeholder="Ex.: 123"
+              />
+              <small class="form__hint">Opcional.</small>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="address_complement"
+                >Complemento</label
+              >
+              <input
+                class="form__input"
+                id="address_complement"
+                name="address_complement"
+                type="text"
+                placeholder="Apto, bloco..."
+              />
+              <small class="form__hint">Opcional.</small>
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="district">Bairro</label>
+              <input
+                class="form__input"
+                id="district"
+                name="district"
+                type="text"
+                placeholder="Seu bairro"
+                required
+              />
+              <small class="form__hint"
+                >Preenchido automaticamente quando possível.</small
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="city">Cidade</label>
+              <input
+                class="form__input"
+                id="city"
+                name="city"
+                type="text"
+                placeholder="Sua cidade"
+                required
+              />
+              <small class="form__hint"
+                >Preenchido automaticamente quando possível.</small
+              >
+            </div>
+
+            <div class="form__field">
+              <label class="form__label" for="state">UF</label>
+              <input
+                class="form__input"
+                id="state"
+                name="state"
+                type="text"
+                placeholder="Ex.: SP"
+                maxlength="2"
+                required
+              />
+              <small class="form__hint">2 letras (ex.: SP, RJ...).</small>
+            </div>
+          </div>
+
+          <div class="form__status" aria-live="polite" aria-atomic="true">
+            <span class="status status--hidden" id="status_message"></span>
+          </div>
+
+          <div class="form__actions">
+            <button
+              class="button button--primary"
+              type="submit"
+              id="submit_button"
+            >
+              Salvar cadastro
+            </button>
+            <button
+              class="button button--ghost"
+              type="button"
+              id="clear_button"
+            >
+              Limpar dados salvos
+            </button>
+          </div>
+
+          <footer class="form__footer">
+            <p class="form__footer-text">
+              Dica: verifique o <strong>Local Storage</strong> em DevTools →
+              Application → Local Storage.
+            </p>
+          </footer>
+        </form>
+      </section>
+    </main>
+
+    <script src="scripts.js" defer></script>
+  </body>
+</html>
